@@ -14,3 +14,10 @@
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
+
+$router->group(['prefix' => 'ads'], function ($router) {
+    $router->get('/', ['uses' => 'AdController@index']);
+    $router->post('/', ['uses' => 'AdController@store', 'middleware' => ['auth:api']]);
+    $router->patch('/{id}', ['uses' => 'AdController@update', 'middleware' => ['auth:api']]);
+});
+

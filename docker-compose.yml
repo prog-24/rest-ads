@@ -25,10 +25,11 @@ services:
     volumes:
     - ./:/app
     environment:
+    - APP_ENV=local
     - DB_HOST=mysql
-    - DB_USERNAME=homestead
-    - DB_PASSWORD=secret
-    - DB_DATABASE=shapeup
+    - DB_USERNAME=db_user
+    - DB_PASSWORD=9kQse2aK
+    - DB_DATABASE=adverts
     networks:
     - webnet
     links:
@@ -42,15 +43,15 @@ services:
     networks:
     - webnet
     environment:
-    - MYSQL_ROOT_PASSWORD=secret
-    - MYSQL_DATABASE=shapeup
-    - MYSQL_USER=homestead
-    - MYSQL_PASSWORD=secret
+    - MYSQL_ROOT_PASSWORD=qjCBuDCG
+    - MYSQL_DATABASE=adverts
+    - MYSQL_USER=db_user
+    - MYSQL_PASSWORD=9kQse2aK
     - MYSQL_ROOT_HOST=%
     restart: on-failure
     volumes:
-    - datastore:/var/lib/mysql
+    - db:/var/lib/mysql
 networks:
   webnet:
 volumes:
-  datastore:
+  db:

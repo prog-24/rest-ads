@@ -17,10 +17,14 @@ You can run the docker either as a native application or virtualized via Virtual
     `docker-machine start`.
     - Follow the onscreen instructions after that.
     
+- Run the migrations by running `docker exec -it restful-json_php_1 composer install`
 - Run the migrations by running `docker exec -it restful-json_php_1 php artisan migrate`
+- Seed the application by running `docker exec -it restful-json_php_1 php artisan db:seed`
 - The application should be ready now on port `8090`. 
 If that port is already in use, your may need to set a new port. Just update the `docker-compose.yml` file
 and run the deploy command again.
+
+- You could skip steps 3-5 by running `docker exec -t restful-json_php_1 envoy run deploy`
 
 ### Testing
 - To test the application run `docker exec -it restful-json_php_1 ./vendor/phpunit/phpunit/phpunit tests`

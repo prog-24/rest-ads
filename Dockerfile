@@ -15,9 +15,10 @@ RUN mv composer.phar /usr/local/bin/composer
 RUN composer global require phpunit/phpunit \
     && composer global require phpunit/dbunit \
     && composer global require sebastian/phpcpd \
+    && composer global require laravel/envoy \
     && composer global require squizlabs/php_codesniffer
-RUN export PATH=~/.composer/vendor/bin:$PATH
 
 #Reset the www-data permissions so it can read the files on the server.
 RUN sed -ri 's/^www-data:x:33:33:/www-data:x:1000:50:/' /etc/passwd
 WORKDIR /app
+ENV PATH="/root/.composer/vendor/bin:${PATH}"
